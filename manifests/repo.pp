@@ -15,5 +15,6 @@ class boxen::repo {
     creates => "${boxen::config::home}/repo/.git",
     cwd     => "${boxen::config::home}/repo",
     require => Class['git'],
+    timeout => 0
   }
 }
