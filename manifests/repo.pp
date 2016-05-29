@@ -5,7 +5,7 @@ class boxen::repo {
 
   $clone_url  = inline_template('<%= scope.lookupvar("::boxen::config::repo_url_template") % scope.lookupvar("::boxen::config::reponame") %>')
   $remote_add = "git remote add origin ${clone_url}"
-  $git_fetch  = 'git fetch -q origin'
+  $git_fetch  = 'git fetch -q origin --depth=1'
   $git_reset  = 'git reset --hard origin/master'
 
   file { "${boxen::config::home}/repo": ensure => directory }
