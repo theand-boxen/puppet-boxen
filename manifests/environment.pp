@@ -22,10 +22,10 @@ class boxen::environment(
 
   include_projects_from_boxen_cli()
 
-  $relative_bin_on_path_ensure = $relative_bin_on_path ? {
-    true    => present,
-    default => absent,
-  }
+  # $relative_bin_on_path_ensure = $relative_bin_on_path ? {
+  #   true    => present,
+  #   default => absent,
+  # }
 
   boxen::env_script {
     'config':
@@ -34,10 +34,10 @@ class boxen::environment(
     'gh_creds':
       content  => template('boxen/gh_creds.sh.erb'),
       priority => 'higher' ;
-    'relative_bin_on_path':
-      ensure   => $relative_bin_on_path_ensure,
-      source   => 'puppet:///modules/boxen/relative_bin_on_path.sh',
-      priority => 'lowest' ;
+    # 'relative_bin_on_path':
+    #   ensure   => $relative_bin_on_path_ensure,
+    #   source   => 'puppet:///modules/boxen/relative_bin_on_path.sh',
+    #   priority => 'lowest' ;
     'boxen_autocomplete':
       content  => template('boxen/boxen_autocomplete.sh.erb'),
       priority => 'lowest' ;
